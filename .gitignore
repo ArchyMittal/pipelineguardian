@@ -6,3 +6,4 @@ __pycache__/
 *.egg-info/
 # Yang et al. evaluation corpus
 eval/yang_corpus/notebooks/
+.venv/

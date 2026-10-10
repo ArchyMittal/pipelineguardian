@@ -29,6 +29,7 @@ import argparse
 import csv
 import json
 import os
+import re
 import subprocess
 import time
 from datetime import datetime, timezone
@@ -43,6 +44,10 @@ from pipelineguardian.llm_config import LLM_RUNS_PER_NOTEBOOK
 HERE = os.path.dirname(__file__)
 YANG_DIR = os.path.join(HERE, "yang_corpus")
 NOTEBOOKS_DIR = os.path.join(YANG_DIR, "notebooks")
+REPAIRED_NOTEBOOKS = {
+    "GitHub-data/notebooks/2021-09-09/nb_334.py":
+        os.path.join(YANG_DIR, "repairs", "2021-09-09-nb_334.ipynb"),
+}
 GROUND_TRUTH_PATH = os.path.join(YANG_DIR, "ground_truth", "ground-truth.csv")
 RESULTS_MD_PATH = os.path.join(HERE, "yang_results.md")
 RESULTS_JSON_PATH = os.path.join(HERE, "yang_results.json")
@@ -96,6 +101,10 @@ def _resolve_notebook_path(nb_id: str, notebooks_dir: str = NOTEBOOKS_DIR) -> Op
     We look for the file relative to notebooks_dir after stripping the
     'GitHub-data/notebooks/' prefix if present.
     """
+    # Explicitly route the approved repaired Yang notebook.
+    repaired_path = REPAIRED_NOTEBOOKS.get(nb_id)
+    if repaired_path is not None and os.path.isfile(repaired_path):
+        return repaired_path
     # Try direct join first
     candidate = os.path.join(notebooks_dir, nb_id)
     if os.path.exists(candidate):
@@ -140,45 +149,119 @@ def _resolve_notebook_path(nb_id: str, notebooks_dir: str = NOTEBOOKS_DIR) -> Op
 # Single-notebook prediction
 # ---------------------------------------------------------------------------
 
+_LAST_AUDIT_FAILURES: dict[tuple[str, int], dict] = {}
+
+
+def _classify_error(e: Exception) -> str:
+    """Classify exception type into provider API, parse, or execution failure."""
+    name = type(e).__name__.lower()
+    msg = str(e).lower()
+    mod = getattr(type(e), "__module__", "").lower()
+
+    if (
+        any(k in name for k in ("api", "ratelimit", "authentication", "auth", "connection", "timeout", "serviceunavailable"))
+        or any(k in mod for k in ("groq", "http", "urllib", "requests"))
+        or any(k in msg for k in ("groq", "rate limit", "503", "429", "api key", "unauthorized", "connection error"))
+        or isinstance(e, (ConnectionError, TimeoutError))
+    ):
+        return "provider_api_error"
+    elif (
+        any(k in name for k in ("notjson", "jsondecode", "syntaxerror", "nbformat"))
+        or ("json" in msg or ("notebook" in msg and "parse" in msg))
+    ):
+        return "notebook_parse_error"
+    else:
+        return "audit_execution_error"
+
+
+def _sanitize_error_message(msg: str) -> str:
+    """Sanitize error messages to avoid leaking API keys or secrets."""
+    sanitized = re.sub(r"gsk_[A-Za-z0-9_\-]+", "gsk_[REDACTED]", msg)
+    sanitized = re.sub(r"Bearer\s+[A-Za-z0-9_\-\.]+", "Bearer [REDACTED]", sanitized, flags=re.IGNORECASE)
+    groq_key = os.environ.get("GROQ_API_KEY")
+    if groq_key and groq_key in sanitized:
+        sanitized = sanitized.replace(groq_key, "[REDACTED_API_KEY]")
+    return sanitized
+
+
 def _predict_notebook(
     nb_path: str,
     condition: AuditCondition,
     llm=None,
     run_index: int = 0,
-) -> dict[str, bool]:
-    """Return {category_col: bool} prediction for one notebook.
-
-    Logs each LLM call to llm_call_log.jsonl.
-    """
+) -> Optional[dict[str, bool]]:
+    """Return category predictions, or None if the audit failed."""
+    _LAST_AUDIT_FAILURES.pop((nb_path, run_index), None)
     t0 = time.time()
+
     try:
         report = run_audit(nb_path, condition, llm=llm)
     except Exception as e:
-        print(f"  [WARN] {os.path.basename(nb_path)}: {e}")
-        return {"pre": False, "overlap": False, "multi": False}
+        elapsed = time.time() - t0
+        err_type = type(e).__name__
+        err_cat = _classify_error(e)
+        raw_error = f"{err_type}: {e}"
+        sanitized_error = _sanitize_error_message(raw_error)
+        print(f"  [WARN] {os.path.basename(nb_path)}: {sanitized_error}")
+
+        _LAST_AUDIT_FAILURES[(nb_path, run_index)] = {
+            "error_type": err_type,
+            "error_category": err_cat,
+            "error": sanitized_error,
+        }
+
+        if condition in LLM_CONDITIONS:
+            _log_llm_call(
+                nb_path, condition, run_index, elapsed,
+                status="failed", error=sanitized_error,
+                error_type=err_type, error_category=err_cat,
+            )
+        return None
+
     elapsed = time.time() - t0
 
-    # Log LLM calls
     if condition in LLM_CONDITIONS:
-        _log_llm_call(nb_path, condition, run_index, elapsed)
+        _log_llm_call(
+            nb_path, condition, run_index, elapsed,
+            status="success",
+        )
 
-    # Binary prediction: any Issue in that category → True
     pred: dict[str, bool] = {}
     for cat, col in YANG_CATEGORY_TO_COLUMN.items():
         pred[col] = any(i.category == cat.value for i in report.issues)
     return pred
 
 
-def _log_llm_call(nb_path: str, condition: AuditCondition, run_index: int, elapsed: float):
+def _log_llm_call(
+    nb_path: str,
+    condition: AuditCondition,
+    run_index: int,
+    elapsed: float,
+    status: str = "success",
+    error: Optional[str] = None,
+    error_type: Optional[str] = None,
+    error_category: Optional[str] = None,
+):
     entry = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "notebook": os.path.basename(nb_path),
         "condition": condition.value,
         "run_index": run_index,
         "latency_s": round(elapsed, 3),
+        "status": status,
     }
-    with open(LLM_CALL_LOG_PATH, "a", encoding="utf-8") as f:
-        f.write(json.dumps(entry) + "\n")
+    if error_type is not None:
+        entry["error_type"] = error_type
+    if error_category is not None:
+        entry["error_category"] = error_category
+    if error is not None:
+        entry["error"] = _sanitize_error_message(error)[:500]
+
+    try:
+        with open(LLM_CALL_LOG_PATH, "a", encoding="utf-8") as f:
+            f.write(json.dumps(entry) + "\n")
+    except Exception as log_err:
+        print(f"  [WARN] Failed to write LLM call log: {log_err}")
 
 
 # ---------------------------------------------------------------------------
@@ -204,7 +287,10 @@ def score_condition(
       run_details: raw per-run predictions (for variance reporting)
     """
     cols = list(YANG_CATEGORY_TO_COLUMN.values())
-    # {nb_id: {col: [bool per run]}}
+    effective_runs = runs if condition in LLM_CONDITIONS else 1
+    n_requested_notebooks = len(ground_truth)
+    n_requested_runs = n_requested_notebooks * effective_runs
+
     all_run_preds: dict[str, dict[str, list[bool]]] = {}
 
     missing_notebooks = []
@@ -220,13 +306,55 @@ def score_condition(
     if missing_notebooks:
         print(f"  [WARN] Could not resolve {len(missing_notebooks)} notebooks — they will be skipped.")
 
+    failed_notebooks: list[str] = []
+    failed_runs: list[dict] = []
+    failed_notebook_reasons: dict[str, str] = {}
+    successful_runs = 0
+    attempted_runs = 0
+
     for nb_id, nb_path in resolved_nbs:
-        all_run_preds[nb_id] = {col: [] for col in cols}
-        effective_runs = runs if condition in LLM_CONDITIONS else 1
+        notebook_run_preds = {col: [] for col in cols}
+        notebook_failed = False
+        nb_failures = []
+
         for run_i in range(effective_runs):
-            pred = _predict_notebook(nb_path, condition, llm=llm, run_index=run_i)
+            attempted_runs += 1
+            pred = _predict_notebook(
+                nb_path, condition, llm=llm, run_index=run_i
+            )
+
+            if pred is None:
+                notebook_failed = True
+                failure_info = _LAST_AUDIT_FAILURES.pop((nb_path, run_i), {})
+                fail_entry = {
+                    "nb_id": nb_id,
+                    "run_index": run_i,
+                    "error_type": failure_info.get("error_type", "AuditFailure"),
+                    "error_category": failure_info.get("error_category", "unknown"),
+                    "error": failure_info.get("error", "Audit failed or returned None"),
+                }
+                failed_runs.append(fail_entry)
+                nb_failures.append(fail_entry)
+                continue
+
+            successful_runs += 1
             for col in cols:
-                all_run_preds[nb_id][col].append(pred.get(col, False))
+                notebook_run_preds[col].append(pred[col])
+
+        if notebook_failed:
+            failed_notebooks.append(nb_id)
+            reasons = [
+                f"run {f['run_index']}: {f['error_type']} ({f['error_category']})"
+                for f in nb_failures
+            ]
+            failed_notebook_reasons[nb_id] = "; ".join(reasons)
+            print(
+                f"  [WARN] Excluding {nb_id} from scoring: "
+                f"at least one audit run failed ({failed_notebook_reasons[nb_id]})."
+            )
+            continue
+
+        all_run_preds[nb_id] = notebook_run_preds
 
     # Majority vote across runs → single point prediction per (nb, col)
     per_notebook = []
@@ -239,72 +367,101 @@ def score_condition(
 
     # Accumulate TP/FP/FN per category
     per_category: dict[str, dict] = {}
-    for col in cols:
-        tp = fp = fn = tn = 0
-        for row in per_notebook:
-            gt_val = ground_truth.get(row["nb_id"], {}).get(col, False)
-            pred_val = row[f"{col}_pred"]
-            if gt_val and pred_val:
-                tp += 1
-            elif not gt_val and pred_val:
-                fp += 1
-            elif gt_val and not pred_val:
-                fn += 1
-            else:
-                tn += 1
+    if not per_notebook:
+        for col in cols:
+            per_category[col] = {
+                "precision": None,
+                "recall": None,
+                "f1": None,
+                "tp": 0, "fp": 0, "fn": 0, "tn": 0,
+            }
+        macro_f1 = None
+    else:
+        for col in cols:
+            tp = fp = fn = tn = 0
+            for row in per_notebook:
+                gt_val = ground_truth.get(row["nb_id"], {}).get(col, False)
+                pred_val = row[f"{col}_pred"]
+                if gt_val and pred_val:
+                    tp += 1
+                elif not gt_val and pred_val:
+                    fp += 1
+                elif gt_val and not pred_val:
+                    fn += 1
+                else:
+                    tn += 1
 
-        precision = tp / (tp + fp) if (tp + fp) else 1.0
-        recall = tp / (tp + fn) if (tp + fn) else 1.0
-        f1 = 2 * precision * recall / (precision + recall) if (precision + recall) else 0.0
+            precision = tp / (tp + fp) if (tp + fp) else 0.0
+            recall = tp / (tp + fn) if (tp + fn) else 0.0
+            f1 = 2 * precision * recall / (precision + recall) if (precision + recall) else 0.0
 
-        per_category[col] = {
-            "precision": round(precision, 4),
-            "recall": round(recall, 4),
-            "f1": round(f1, 4),
-            "tp": tp, "fp": fp, "fn": fn, "tn": tn,
-        }
+            per_category[col] = {
+                "precision": round(precision, 4),
+                "recall": round(recall, 4),
+                "f1": round(f1, 4),
+                "tp": tp, "fp": fp, "fn": fn, "tn": tn,
+            }
 
-    macro_f1 = sum(m["f1"] for m in per_category.values()) / len(per_category) if per_category else 0.0
+        macro_f1 = sum(m["f1"] for m in per_category.values()) / len(per_category) if per_category else 0.0
 
     # LLM variance: mean ± std over runs per category
     run_variance: dict[str, dict] = {}
     if condition in LLM_CONDITIONS and runs > 1:
-        for col in cols:
-            run_f1s = []
-            for run_i in range(runs):
-                tp = fp = fn = 0
-                for nb_id, run_preds in all_run_preds.items():
-                    if run_i >= len(run_preds[col]):
-                        continue
-                    pred_val = run_preds[col][run_i]
-                    gt_val = ground_truth.get(nb_id, {}).get(col, False)
-                    if gt_val and pred_val:
-                        tp += 1
-                    elif not gt_val and pred_val:
-                        fp += 1
-                    elif gt_val and not pred_val:
-                        fn += 1
-                prec = tp / (tp + fp) if (tp + fp) else 1.0
-                rec = tp / (tp + fn) if (tp + fn) else 1.0
-                f1_r = 2 * prec * rec / (prec + rec) if (prec + rec) else 0.0
-                run_f1s.append(f1_r)
-            mean_f1 = sum(run_f1s) / len(run_f1s) if run_f1s else 0.0
-            var = sum((x - mean_f1) ** 2 for x in run_f1s) / len(run_f1s) if run_f1s else 0.0
-            std_f1 = var ** 0.5
-            run_variance[col] = {
-                "mean_f1": round(mean_f1, 4),
-                "std_f1": round(std_f1, 4),
-                "run_f1s": [round(x, 4) for x in run_f1s],
-            }
+        if not all_run_preds:
+            for col in cols:
+                run_variance[col] = {
+                    "mean_f1": None,
+                    "std_f1": None,
+                    "run_f1s": [],
+                }
+        else:
+            for col in cols:
+                run_f1s = []
+                for run_i in range(runs):
+                    tp = fp = fn = 0
+                    for nb_id, run_preds in all_run_preds.items():
+                        if run_i >= len(run_preds[col]):
+                            continue
+                        pred_val = run_preds[col][run_i]
+                        gt_val = ground_truth.get(nb_id, {}).get(col, False)
+                        if gt_val and pred_val:
+                            tp += 1
+                        elif not gt_val and pred_val:
+                            fp += 1
+                        elif gt_val and not pred_val:
+                            fn += 1
+                    prec = tp / (tp + fp) if (tp + fp) else 0.0
+                    rec = tp / (tp + fn) if (tp + fn) else 0.0
+                    f1_r = 2 * prec * rec / (prec + rec) if (prec + rec) else 0.0
+                    run_f1s.append(f1_r)
+                mean_f1 = sum(run_f1s) / len(run_f1s) if run_f1s else 0.0
+                var = sum((x - mean_f1) ** 2 for x in run_f1s) / len(run_f1s) if run_f1s else 0.0
+                std_f1 = var ** 0.5
+                run_variance[col] = {
+                    "mean_f1": round(mean_f1, 4),
+                    "std_f1": round(std_f1, 4),
+                    "run_f1s": [round(x, 4) for x in run_f1s],
+                }
 
     return {
         "condition": condition.value,
         "per_category": per_category,
-        "macro_f1": round(macro_f1, 4),
+        "macro_f1": round(macro_f1, 4) if macro_f1 is not None else None,
         "per_notebook": per_notebook,
         "run_variance": run_variance,
         "n_scored": len(per_notebook),
-        "n_skipped": len(missing_notebooks),
+        "n_skipped": len(missing_notebooks) + len(failed_notebooks),
+        "n_missing": len(missing_notebooks),
+        "n_failed_notebooks": len(failed_notebooks),
+        "n_failed_runs": len(failed_runs),
+        "n_successful_runs": successful_runs,
+        "n_attempted_runs": attempted_runs,
+        "n_requested_runs": n_requested_runs,
+        "n_requested_notebooks": n_requested_notebooks,
+        "failed_notebooks": failed_notebooks,
+        "failed_notebook_reasons": failed_notebook_reasons,
+        "failed_runs": failed_runs,
+        "no_data": len(per_notebook) == 0,
         "out_of_scope_categories": [Category.REPRODUCIBILITY.value, Category.VALIDATION_STRATEGY.value],
     }
 
@@ -313,15 +470,29 @@ def score_condition(
 # McNemar's test
 # ---------------------------------------------------------------------------
 
-def mcnemar_test(cond_a_preds: list[bool], cond_b_preds: list[bool],
-                 gt: list[bool]) -> dict:
+def mcnemar_test(
+    cond_a_preds: list[bool],
+    cond_b_preds: list[bool],
+    gt: list[bool],
+) -> dict:
     """Compute McNemar's test comparing two conditions on paired notebook outcomes.
 
-    Returns {statistic, p_value, n01, n10} where n01 = A wrong, B right and
+    Returns {statistic, p_value, n01, n10, n_paired} where n01 = A wrong, B right and
     n10 = A right, B wrong. Uses scipy.stats binomtest (or exact fallback) for p-value.
+    If n_paired == 0, returns explicit no-data outcome with None for statistic and p_value.
     """
     if len(cond_a_preds) != len(cond_b_preds) or len(cond_a_preds) != len(gt):
         raise ValueError("Input lists must have identical lengths for paired McNemar test")
+
+    n_paired = len(cond_a_preds)
+    if n_paired == 0:
+        return {
+            "statistic": None,
+            "p_value": None,
+            "n01": 0,
+            "n10": 0,
+            "n_paired": 0,
+        }
 
     a_correct = [p == g for p, g in zip(cond_a_preds, gt)]
     b_correct = [p == g for p, g in zip(cond_b_preds, gt)]
@@ -333,7 +504,13 @@ def mcnemar_test(cond_a_preds: list[bool], cond_b_preds: list[bool],
 
     n = n01 + n10
     if n == 0:
-        return {"statistic": 0.0, "p_value": 1.0, "n01": 0, "n10": 0}
+        return {
+            "statistic": 0.0,
+            "p_value": 1.0,
+            "n01": 0,
+            "n10": 0,
+            "n_paired": n_paired,
+        }
 
     statistic = (abs(n10 - n01) - 1) ** 2 / (n10 + n01) if abs(n10 - n01) >= 1 else 0.0
 
@@ -355,10 +532,14 @@ def mcnemar_test(cond_a_preds: list[bool], cond_b_preds: list[bool],
         "p_value": round(p_value, 4),
         "n01": n01,
         "n10": n10,
+        "n_paired": n_paired,
     }
 
 
-def compare_architectures(results_by_condition: dict[str, dict], ground_truth: dict[str, dict[str, bool]]) -> dict:
+def compare_architectures(
+    results_by_condition: dict[str, dict],
+    ground_truth: dict[str, dict[str, bool]],
+) -> dict:
     """Perform paired per-notebook McNemar comparisons across conditions for each category.
 
     results_by_condition maps condition_name -> output from score_condition().
@@ -375,10 +556,11 @@ def compare_architectures(results_by_condition: dict[str, dict], ground_truth: d
             pair_key = f"{cond_a}_vs_{cond_b}"
             comparisons[pair_key] = {}
 
-            # Build aligned prediction vectors per notebook
-            nb_ids_a = {row["nb_id"]: row for row in results_by_condition[cond_a]["per_notebook"]}
-            nb_ids_b = {row["nb_id"]: row for row in results_by_condition[cond_b]["per_notebook"]}
+            # Build aligned prediction vectors per notebook using only scored notebooks
+            nb_ids_a = {row["nb_id"]: row for row in results_by_condition[cond_a].get("per_notebook", [])}
+            nb_ids_b = {row["nb_id"]: row for row in results_by_condition[cond_b].get("per_notebook", [])}
             common_nbs = sorted(set(nb_ids_a.keys()) & set(nb_ids_b.keys()))
+            comparisons[pair_key]["n_paired"] = len(common_nbs)
 
             for col in cols:
                 preds_a = [nb_ids_a[nb][f"{col}_pred"] for nb in common_nbs]
@@ -423,12 +605,14 @@ def write_results(results: dict):
         json.dump(results, f, indent=2)
 
     cols_display = {"pre": "Preprocessing", "overlap": "Overlap", "multi": "Multi-test"}
+    macro_f1_disp = results.get("macro_f1")
+    macro_f1_str = f"{macro_f1_disp:.4f}" if macro_f1_disp is not None else "N/A"
     lines = [
         "# Yang-Corpus Evaluation Results\n",
         f"Condition: **{results.get('condition', '?')}**  "
         f"| Notebooks scored: {results.get('n_scored', '?')}  "
         f"| Skipped: {results.get('n_skipped', 0)}  "
-        f"| **Macro-F1: {results.get('macro_f1', '?')}**\n",
+        f"| **Macro-F1: {macro_f1_str}**\n",
         "> [!NOTE]\n"
         "> Categories REPRODUCIBILITY and VALIDATION_STRATEGY have no Yang ground-truth labels "
         "> and are evaluated via dedicated separate benchmarks.\n",
@@ -437,17 +621,22 @@ def write_results(results: dict):
         "|---|---|---|---|---|---|---|",
     ]
     for col, name in cols_display.items():
-        m = results["per_category"].get(col, {})
+        m = results.get("per_category", {}).get(col, {})
+        p = f"{m['precision']:.4f}" if m.get("precision") is not None else "N/A"
+        r = f"{m['recall']:.4f}" if m.get("recall") is not None else "N/A"
+        f1_val = f"{m['f1']:.4f}" if m.get("f1") is not None else "N/A"
         lines.append(
-            f"| {name} | {m.get('precision','?')} | {m.get('recall','?')} | "
-            f"{m.get('f1','?')} | {m.get('tp','?')} | {m.get('fp','?')} | {m.get('fn','?')} |"
+            f"| {name} | {p} | {r} | "
+            f"{f1_val} | {m.get('tp','?')} | {m.get('fp','?')} | {m.get('fn','?')} |"
         )
     if results.get("run_variance"):
         lines.append("\n## LLM Variance (mean ± std F1 over runs)\n")
         for col, name in cols_display.items():
             v = results["run_variance"].get(col, {})
-            if v:
-                lines.append(f"- {name}: {v.get('mean_f1','?')} ± {v.get('std_f1','?')}")
+            if v and v.get("mean_f1") is not None:
+                lines.append(f"- {name}: {v.get('mean_f1'):.4f} ± {v.get('std_f1'):.4f}")
+            elif v:
+                lines.append(f"- {name}: N/A")
 
     with open(RESULTS_MD_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
@@ -495,4 +684,7 @@ if __name__ == "__main__":
 
     for col in ("pre", "overlap", "multi"):
         m = results["per_category"][col]
-        print(f"  {col}: P={m['precision']} R={m['recall']} F1={m['f1']}")
+        p_val = f"{m['precision']:.4f}" if m["precision"] is not None else "N/A"
+        r_val = f"{m['recall']:.4f}" if m["recall"] is not None else "N/A"
+        f1_val = f"{m['f1']:.4f}" if m["f1"] is not None else "N/A"
+        print(f"  {col}: P={p_val} R={r_val} F1={f1_val}")
