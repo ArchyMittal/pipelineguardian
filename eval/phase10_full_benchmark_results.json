@@ -1,0 +1,2499 @@
+{
+  "timestamp": "2026-10-27T12:42:26.323503+00:00",
+  "git_commit": "bef0fbabe41a28f855e1dfc6fcba6fa899ff68e2",
+  "population": {
+    "total_gt_notebooks": 100,
+    "common_set_scored": 86,
+    "exclusions_count": 14,
+    "exclusions": [
+      {
+        "nb_id": "GitHub-data/notebooks/2021-09-17/nb_3303.py",
+        "reason": "ast_parse_error (SyntaxError L16: invalid syntax. Perhaps you forgot a comma?)",
+        "char_count": 8200
+      },
+      {
+        "nb_id": "GitHub-data/notebooks/2021-09-21/nb_1239.py",
+        "reason": "ast_parse_error (SyntaxError L4: expected an indented block after 'try' statement on line 1)",
+        "char_count": 5341
+      },
+      {
+        "nb_id": "GitHub-data/notebooks/2021-09-30/nb_300.py",
+        "reason": "ast_parse_error (SyntaxError L195: invalid syntax. Perhaps you forgot a comma?)",
+        "char_count": 14940
+      },
+      {
+        "nb_id": "GitHub-data/notebooks/2021-09-29/nb_2021.py",
+        "reason": "ast_parse_error (SyntaxError L4: invalid syntax)",
+        "char_count": 11987
+      },
+      {
+        "nb_id": "GitHub-data/notebooks/2021-09-27/nb_1550.py",
+        "reason": "ast_parse_error (SyntaxError L27: invalid syntax)",
+        "char_count": 11750
+      },
+      {
+        "nb_id": "GitHub-data/notebooks/2021-09-08/nb_2978.py",
+        "reason": "ast_parse_error (SyntaxError L104: '(' was never closed)",
+        "char_count": 7025
+      },
+      {
+        "nb_id": "GitHub-data/notebooks/2021-09-21/nb_3988.py",
+        "reason": "ast_parse_error (SyntaxError L94: invalid syntax)",
+        "char_count": 4986
+      },
+      {
+        "nb_id": "GitHub-data/notebooks/2021-09-12/nb_3074.py",
+        "reason": "ast_parse_error (SyntaxError L31: unexpected indent)",
+        "char_count": 1905
+      },
+      {
+        "nb_id": "GitHub-data/notebooks/2021-09-09/nb_1559.py",
+        "reason": "ast_parse_error (SyntaxError L220: unexpected indent)",
+        "char_count": 8808
+      },
+      {
+        "nb_id": "GitHub-data/notebooks/2021-09-14/nb_2780.py",
+        "reason": "ast_parse_error (SyntaxError L216: invalid syntax)",
+        "char_count": 9995
+      },
+      {
+        "nb_id": "GitHub-data/notebooks/2021-09-05/nb_1162.py",
+        "reason": "ast_parse_error (SyntaxError L255: unexpected indent)",
+        "char_count": 10221
+      },
+      {
+        "nb_id": "GitHub-data/notebooks/2021-09-02/nb_1449.py",
+        "reason": "oversized (51329 chars > 28000)",
+        "char_count": 51329
+      },
+      {
+        "nb_id": "GitHub-data/notebooks/2021-09-23/nb_2111.py",
+        "reason": "ast_parse_error (SyntaxError L452: unexpected indent)",
+        "char_count": 17413
+      },
+      {
+        "nb_id": "GitHub-data/notebooks/2021-09-28/nb_474.py",
+        "reason": "ast_parse_error (SyntaxError L57: invalid syntax)",
+        "char_count": 2181
+      }
+    ]
+  },
+  "model_config": {
+    "model": "qwen/qwen3.8-27b",
+    "provider": "groq",
+    "temperature": 0,
+    "max_tokens": 1500,
+    "runs_per_notebook": 3,
+    "prompt_version": "v1",
+    "context_schema_version": "v1"
+  },
+  "conditions": {
+    "rule_only": {
+      "n_requested": 86,
+      "n_scored": 86,
+      "failed_notebooks": [],
+      "metrics": {
+        "n_scored": 86,
+        "per_category": {
+          "pre": {
+            "precision": 0.7692,
+            "recall": 0.5263,
+            "f1": 0.625,
+            "tp": 10,
+            "fp": 3,
+            "fn": 9,
+            "tn": 64
+          },
+          "overlap": {
+            "precision": 0.2,
+            "recall": 0.1429,
+            "f1": 0.1667,
+            "tp": 1,
+            "fp": 4,
+            "fn": 6,
+            "tn": 75
+          },
+          "multi": {
+            "precision": 0.8889,
+            "recall": 0.2857,
+            "f1": 0.4324,
+            "tp": 8,
+            "fp": 1,
+            "fn": 20,
+            "tn": 57
+          }
+        },
+        "macro_f1": 0.408
+      },
+      "per_run_variance": {
+        "run_macro_f1s": [
+          0.408
+        ],
+        "mean_macro_f1": 0.408,
+        "std_macro_f1": 0.0
+      }
+    },
+    "llm_only": {
+      "n_requested": 86,
+      "n_scored": 65,
+      "failed_runs": [],
+      "deferred_oversized_runs": [
+        [
+          "GitHub-data/notebooks/2021-09-27/nb_3449.py",
+          0,
+          "Estimated input tokens (~7583 tokens, 22751 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-27/nb_3449.py",
+          1,
+          "Estimated input tokens (~7583 tokens, 22751 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-27/nb_3449.py",
+          2,
+          "Estimated input tokens (~7583 tokens, 22751 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-13/nb_1764.py",
+          0,
+          "Estimated input tokens (~8203 tokens, 24610 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-13/nb_1764.py",
+          1,
+          "Estimated input tokens (~8203 tokens, 24610 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-13/nb_1764.py",
+          2,
+          "Estimated input tokens (~8203 tokens, 24610 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-17/nb_4156.py",
+          0,
+          "Estimated input tokens (~8756 tokens, 26268 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-17/nb_4156.py",
+          1,
+          "Estimated input tokens (~8756 tokens, 26268 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-17/nb_4156.py",
+          2,
+          "Estimated input tokens (~8756 tokens, 26268 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-10/nb_1411.py",
+          0,
+          "Estimated input tokens (~9216 tokens, 27648 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-10/nb_1411.py",
+          1,
+          "Estimated input tokens (~9216 tokens, 27648 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-10/nb_1411.py",
+          2,
+          "Estimated input tokens (~9216 tokens, 27648 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-17/nb_669.py",
+          2,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1324. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-24/nb_934.py",
+          1,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1324. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-24/nb_934.py",
+          2,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1324. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-09/nb_1070.py",
+          0,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1324. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-11/nb_86.py",
+          0,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1324. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-11/nb_86.py",
+          1,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1324. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-11/nb_86.py",
+          2,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1324. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-29/nb_1147.py",
+          0,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1324. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-20/nb_1322.py",
+          0,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1324. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-20/nb_1322.py",
+          1,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1324. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-20/nb_1322.py",
+          2,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1311. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-15/nb_281.py",
+          1,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1324. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-29/nb_416.py",
+          0,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1324. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-05/nb_2770.py",
+          1,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1006. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-11/nb_605.py",
+          1,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1006. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-10/nb_1970.py",
+          0,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1006. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-10/nb_1970.py",
+          1,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1006. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-12/nb_677.py",
+          0,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1006. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-12/nb_677.py",
+          1,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1006. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-01/nb_2528.py",
+          2,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1006. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-04/nb_2749.py",
+          0,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1006. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-01/nb_1290.py",
+          0,
+          "Estimated input tokens (~9310 tokens, 27930 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-01/nb_1290.py",
+          1,
+          "Estimated input tokens (~9310 tokens, 27930 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-01/nb_1290.py",
+          2,
+          "Estimated input tokens (~9310 tokens, 27930 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-03/nb_891.py",
+          0,
+          "Estimated input tokens (~7003 tokens, 21009 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-03/nb_891.py",
+          1,
+          "Estimated input tokens (~7003 tokens, 21009 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-03/nb_891.py",
+          2,
+          "Estimated input tokens (~7003 tokens, 21009 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-30/nb_619.py",
+          0,
+          "Estimated input tokens (~7798 tokens, 23395 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-30/nb_619.py",
+          1,
+          "Estimated input tokens (~7798 tokens, 23395 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-30/nb_619.py",
+          2,
+          "Estimated input tokens (~7798 tokens, 23395 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ]
+      ],
+      "metrics": {
+        "n_scored": 65,
+        "per_category": {
+          "pre": {
+            "precision": 0.5806,
+            "recall": 1.0,
+            "f1": 0.7347,
+            "tp": 18,
+            "fp": 13,
+            "fn": 0,
+            "tn": 34
+          },
+          "overlap": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 7,
+            "fn": 5,
+            "tn": 53
+          },
+          "multi": {
+            "precision": 0.4857,
+            "recall": 0.8947,
+            "f1": 0.6296,
+            "tp": 17,
+            "fp": 18,
+            "fn": 2,
+            "tn": 28
+          }
+        },
+        "macro_f1": 0.4548
+      },
+      "per_run_variance": {
+        "run_macro_f1s": [
+          0.4548,
+          0.4548,
+          0.4548
+        ],
+        "mean_macro_f1": 0.4548,
+        "std_macro_f1": 0.0,
+        "per_run_details": [
+          {
+            "n_scored": 65,
+            "per_category": {
+              "pre": {
+                "precision": 0.5806,
+                "recall": 1.0,
+                "f1": 0.7347,
+                "tp": 18,
+                "fp": 13,
+                "fn": 0,
+                "tn": 34
+              },
+              "overlap": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "tp": 0,
+                "fp": 7,
+                "fn": 5,
+                "tn": 53
+              },
+              "multi": {
+                "precision": 0.4857,
+                "recall": 0.8947,
+                "f1": 0.6296,
+                "tp": 17,
+                "fp": 18,
+                "fn": 2,
+                "tn": 28
+              }
+            },
+            "macro_f1": 0.4548
+          },
+          {
+            "n_scored": 65,
+            "per_category": {
+              "pre": {
+                "precision": 0.5806,
+                "recall": 1.0,
+                "f1": 0.7347,
+                "tp": 18,
+                "fp": 13,
+                "fn": 0,
+                "tn": 34
+              },
+              "overlap": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "tp": 0,
+                "fp": 7,
+                "fn": 5,
+                "tn": 53
+              },
+              "multi": {
+                "precision": 0.4857,
+                "recall": 0.8947,
+                "f1": 0.6296,
+                "tp": 17,
+                "fp": 18,
+                "fn": 2,
+                "tn": 28
+              }
+            },
+            "macro_f1": 0.4548
+          },
+          {
+            "n_scored": 65,
+            "per_category": {
+              "pre": {
+                "precision": 0.5806,
+                "recall": 1.0,
+                "f1": 0.7347,
+                "tp": 18,
+                "fp": 13,
+                "fn": 0,
+                "tn": 34
+              },
+              "overlap": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "tp": 0,
+                "fp": 7,
+                "fn": 5,
+                "tn": 53
+              },
+              "multi": {
+                "precision": 0.4857,
+                "recall": 0.8947,
+                "f1": 0.6296,
+                "tp": 17,
+                "fp": 18,
+                "fn": 2,
+                "tn": 28
+              }
+            },
+            "macro_f1": 0.4548
+          }
+        ]
+      },
+      "majority_vote_predictions": {
+        "GitHub-data/notebooks/2021-09-05/nb_1244.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-07/nb_949.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-09/nb_498.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-04/nb_1743.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-15/nb_3436.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-14/nb_100.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-23/nb_2646.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-07/nb_4061.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-26/nb_1094.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-17/nb_1782.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-02/nb_3065.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-30/nb_195.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-12/nb_1942.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-01/nb_604.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-25/nb_1162.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-09/nb_2544.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-10/nb_2760.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-17/nb_1585.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-24/nb_2945.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-24/nb_2053.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-10/nb_322.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-21/nb_2660.py": {
+          "pre": true,
+          "overlap": true,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-27/nb_1060.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-06/nb_1824.py": {
+          "pre": true,
+          "overlap": true,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-13/nb_959.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-21/nb_2685.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-23/nb_524.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-22/nb_463.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-01/nb_1334.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-08/nb_1761.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-16/nb_318.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-18/nb_1959.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-24/nb_2439.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-05/nb_2816.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-08/nb_678.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-30/nb_3594.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-12/nb_125.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-25/nb_2239.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-25/nb_2421.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-09/nb_1731.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-10/nb_1176.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-30/nb_89.py": {
+          "pre": true,
+          "overlap": true,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-10/nb_627.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-05/nb_773.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-09/nb_334.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-14/nb_65.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-20/nb_1743.py": {
+          "pre": false,
+          "overlap": true,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-18/nb_278.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-11/nb_1548.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-20/nb_296.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-30/nb_3336.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-27/nb_4381.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-19/nb_1670.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-07/nb_2921.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-05/nb_1630.py": {
+          "pre": false,
+          "overlap": true,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-29/nb_1504.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-13/nb_3144.py": {
+          "pre": true,
+          "overlap": true,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-06/nb_1417.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-04/nb_1087.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-05/nb_1633.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-13/nb_606.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-12/nb_606.py": {
+          "pre": false,
+          "overlap": true,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-03/nb_2630.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-28/nb_1940.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-02/nb_2442.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        }
+      }
+    },
+    "llm_with_context": {
+      "n_requested": 86,
+      "n_scored": 63,
+      "failed_runs": [],
+      "deferred_oversized_runs": [
+        [
+          "GitHub-data/notebooks/2021-09-30/nb_195.py",
+          0,
+          "Estimated input tokens (~7101 tokens, 21303 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-30/nb_195.py",
+          1,
+          "Estimated input tokens (~7101 tokens, 21303 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-30/nb_195.py",
+          2,
+          "Estimated input tokens (~7101 tokens, 21303 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-27/nb_3449.py",
+          0,
+          "Estimated input tokens (~7748 tokens, 23244 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-27/nb_3449.py",
+          1,
+          "Estimated input tokens (~7748 tokens, 23244 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-27/nb_3449.py",
+          2,
+          "Estimated input tokens (~7748 tokens, 23244 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-13/nb_1764.py",
+          0,
+          "Estimated input tokens (~8352 tokens, 25056 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-13/nb_1764.py",
+          1,
+          "Estimated input tokens (~8352 tokens, 25056 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-13/nb_1764.py",
+          2,
+          "Estimated input tokens (~8352 tokens, 25056 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-17/nb_4156.py",
+          0,
+          "Estimated input tokens (~8902 tokens, 26707 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-17/nb_4156.py",
+          1,
+          "Estimated input tokens (~8902 tokens, 26707 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-17/nb_4156.py",
+          2,
+          "Estimated input tokens (~8902 tokens, 26707 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-10/nb_1411.py",
+          0,
+          "Estimated input tokens (~9362 tokens, 28087 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-10/nb_1411.py",
+          1,
+          "Estimated input tokens (~9362 tokens, 28087 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-10/nb_1411.py",
+          2,
+          "Estimated input tokens (~9362 tokens, 28087 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-17/nb_669.py",
+          2,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1344. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-24/nb_934.py",
+          0,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1341. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-24/nb_934.py",
+          2,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1344. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-09/nb_1070.py",
+          0,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1344. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-09/nb_1070.py",
+          1,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1344. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-09/nb_1070.py",
+          2,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1341. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-11/nb_86.py",
+          1,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1344. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-11/nb_86.py",
+          2,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1341. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-29/nb_1147.py",
+          0,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1344. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-29/nb_1147.py",
+          1,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1341. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-20/nb_1322.py",
+          1,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1344. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-20/nb_1322.py",
+          2,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1341. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-15/nb_281.py",
+          1,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1344. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-29/nb_416.py",
+          0,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1341. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-29/nb_416.py",
+          1,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1344. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-25/nb_2239.py",
+          0,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1344. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-05/nb_2770.py",
+          2,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1081. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-30/nb_89.py",
+          1,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1081. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-11/nb_605.py",
+          0,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1081. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-11/nb_605.py",
+          1,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1081. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-10/nb_1970.py",
+          0,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1081. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-10/nb_1970.py",
+          1,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1081. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-12/nb_677.py",
+          0,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1081. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-12/nb_677.py",
+          1,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1081. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-12/nb_677.py",
+          2,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1081. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-04/nb_2749.py",
+          0,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1081. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-04/nb_2749.py",
+          1,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1081. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-01/nb_1290.py",
+          0,
+          "Estimated input tokens (~9456 tokens, 28369 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-01/nb_1290.py",
+          1,
+          "Estimated input tokens (~9456 tokens, 28369 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-01/nb_1290.py",
+          2,
+          "Estimated input tokens (~9456 tokens, 28369 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-03/nb_891.py",
+          0,
+          "Estimated input tokens (~7149 tokens, 21448 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-03/nb_891.py",
+          1,
+          "Estimated input tokens (~7149 tokens, 21448 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-03/nb_891.py",
+          2,
+          "Estimated input tokens (~7149 tokens, 21448 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-30/nb_619.py",
+          0,
+          "Estimated input tokens (~7945 tokens, 23837 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-30/nb_619.py",
+          1,
+          "Estimated input tokens (~7945 tokens, 23837 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-30/nb_619.py",
+          2,
+          "Estimated input tokens (~7945 tokens, 23837 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ]
+      ],
+      "metrics": {
+        "n_scored": 63,
+        "per_category": {
+          "pre": {
+            "precision": 0.6071,
+            "recall": 1.0,
+            "f1": 0.7556,
+            "tp": 17,
+            "fp": 11,
+            "fn": 0,
+            "tn": 35
+          },
+          "overlap": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "fp": 4,
+            "fn": 4,
+            "tn": 55
+          },
+          "multi": {
+            "precision": 0.5862,
+            "recall": 1.0,
+            "f1": 0.7391,
+            "tp": 17,
+            "fp": 12,
+            "fn": 0,
+            "tn": 34
+          }
+        },
+        "macro_f1": 0.4982
+      },
+      "per_run_variance": {
+        "run_macro_f1s": [
+          0.5037,
+          0.4834,
+          0.4927
+        ],
+        "mean_macro_f1": 0.4933,
+        "std_macro_f1": 0.0083,
+        "per_run_details": [
+          {
+            "n_scored": 63,
+            "per_category": {
+              "pre": {
+                "precision": 0.6071,
+                "recall": 1.0,
+                "f1": 0.7556,
+                "tp": 17,
+                "fp": 11,
+                "fn": 0,
+                "tn": 35
+              },
+              "overlap": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "tp": 0,
+                "fp": 4,
+                "fn": 4,
+                "tn": 55
+              },
+              "multi": {
+                "precision": 0.6071,
+                "recall": 1.0,
+                "f1": 0.7556,
+                "tp": 17,
+                "fp": 11,
+                "fn": 0,
+                "tn": 35
+              }
+            },
+            "macro_f1": 0.5037
+          },
+          {
+            "n_scored": 63,
+            "per_category": {
+              "pre": {
+                "precision": 0.5862,
+                "recall": 1.0,
+                "f1": 0.7391,
+                "tp": 17,
+                "fp": 12,
+                "fn": 0,
+                "tn": 34
+              },
+              "overlap": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "tp": 0,
+                "fp": 5,
+                "fn": 4,
+                "tn": 54
+              },
+              "multi": {
+                "precision": 0.5714,
+                "recall": 0.9412,
+                "f1": 0.7111,
+                "tp": 16,
+                "fp": 12,
+                "fn": 1,
+                "tn": 34
+              }
+            },
+            "macro_f1": 0.4834
+          },
+          {
+            "n_scored": 63,
+            "per_category": {
+              "pre": {
+                "precision": 0.5862,
+                "recall": 1.0,
+                "f1": 0.7391,
+                "tp": 17,
+                "fp": 12,
+                "fn": 0,
+                "tn": 34
+              },
+              "overlap": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "tp": 0,
+                "fp": 4,
+                "fn": 4,
+                "tn": 55
+              },
+              "multi": {
+                "precision": 0.5862,
+                "recall": 1.0,
+                "f1": 0.7391,
+                "tp": 17,
+                "fp": 12,
+                "fn": 0,
+                "tn": 34
+              }
+            },
+            "macro_f1": 0.4927
+          }
+        ]
+      },
+      "majority_vote_predictions": {
+        "GitHub-data/notebooks/2021-09-05/nb_1244.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-07/nb_949.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-09/nb_498.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-04/nb_1743.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-15/nb_3436.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-14/nb_100.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-23/nb_2646.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-07/nb_4061.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-26/nb_1094.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-17/nb_1782.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-02/nb_3065.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-12/nb_1942.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-01/nb_604.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-25/nb_1162.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-09/nb_2544.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-10/nb_2760.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-17/nb_1585.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-24/nb_2945.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-24/nb_2053.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-10/nb_322.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-21/nb_2660.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-27/nb_1060.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-06/nb_1824.py": {
+          "pre": false,
+          "overlap": true,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-13/nb_959.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-21/nb_2685.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-23/nb_524.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-22/nb_463.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-01/nb_1334.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-08/nb_1761.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-16/nb_318.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-18/nb_1959.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-24/nb_2439.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-05/nb_2816.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-08/nb_678.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-30/nb_3594.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-12/nb_125.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-25/nb_2421.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-09/nb_1731.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-10/nb_1176.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-01/nb_2528.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-10/nb_627.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-05/nb_773.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-09/nb_334.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-14/nb_65.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-20/nb_1743.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-18/nb_278.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-11/nb_1548.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-20/nb_296.py": {
+          "pre": true,
+          "overlap": true,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-30/nb_3336.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-27/nb_4381.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-19/nb_1670.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-07/nb_2921.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-05/nb_1630.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-29/nb_1504.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-13/nb_3144.py": {
+          "pre": true,
+          "overlap": true,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-06/nb_1417.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-04/nb_1087.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-05/nb_1633.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-13/nb_606.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-12/nb_606.py": {
+          "pre": true,
+          "overlap": true,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-03/nb_2630.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-28/nb_1940.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-02/nb_2442.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        }
+      }
+    },
+    "hybrid": {
+      "n_requested": 86,
+      "n_scored": 46,
+      "failed_runs": [
+        [
+          "GitHub-data/notebooks/2021-09-11/nb_605.py",
+          0,
+          "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198290, Requested 2118. Please try again in 2m56.256s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-11/nb_605.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-11/nb_605.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-10/nb_1970.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-10/nb_1970.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-10/nb_1970.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-12/nb_677.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-12/nb_677.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-12/nb_677.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-01/nb_2528.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-01/nb_2528.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-01/nb_2528.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-04/nb_2749.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-04/nb_2749.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-04/nb_2749.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-10/nb_627.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-10/nb_627.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-10/nb_627.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-05/nb_773.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-05/nb_773.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-05/nb_773.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-09/nb_334.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-09/nb_334.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-09/nb_334.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-14/nb_65.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-14/nb_65.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-14/nb_65.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-20/nb_1743.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-20/nb_1743.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-20/nb_1743.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-18/nb_278.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-18/nb_278.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-18/nb_278.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-11/nb_1548.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-11/nb_1548.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-11/nb_1548.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-20/nb_296.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-20/nb_296.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-20/nb_296.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-01/nb_1290.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-01/nb_1290.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-01/nb_1290.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-30/nb_3336.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-30/nb_3336.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-30/nb_3336.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-27/nb_4381.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-27/nb_4381.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-27/nb_4381.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-19/nb_1670.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-19/nb_1670.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-19/nb_1670.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-07/nb_2921.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-07/nb_2921.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-07/nb_2921.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-05/nb_1630.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-05/nb_1630.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-05/nb_1630.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-29/nb_1504.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-29/nb_1504.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-29/nb_1504.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-13/nb_3144.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-13/nb_3144.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-13/nb_3144.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-03/nb_891.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-03/nb_891.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-03/nb_891.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-06/nb_1417.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-06/nb_1417.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-06/nb_1417.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-04/nb_1087.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-04/nb_1087.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-04/nb_1087.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-30/nb_619.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-30/nb_619.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-30/nb_619.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-05/nb_1633.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-05/nb_1633.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-05/nb_1633.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-13/nb_606.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-13/nb_606.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-13/nb_606.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-12/nb_606.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-12/nb_606.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-12/nb_606.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-03/nb_2630.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-03/nb_2630.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-03/nb_2630.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-28/nb_1940.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-28/nb_1940.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-28/nb_1940.py",
+          2,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-02/nb_2442.py",
+          0,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-02/nb_2442.py",
+          1,
+          "Missing checkpoint"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-02/nb_2442.py",
+          2,
+          "Missing checkpoint"
+        ]
+      ],
+      "deferred_oversized_runs": [
+        [
+          "GitHub-data/notebooks/2021-09-27/nb_3449.py",
+          0,
+          "Estimated input tokens (~7632 tokens, 22897 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-27/nb_3449.py",
+          1,
+          "Estimated input tokens (~7632 tokens, 22897 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-27/nb_3449.py",
+          2,
+          "Estimated input tokens (~7632 tokens, 22897 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-13/nb_1764.py",
+          0,
+          "Estimated input tokens (~8236 tokens, 24709 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-13/nb_1764.py",
+          1,
+          "Estimated input tokens (~8236 tokens, 24709 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-13/nb_1764.py",
+          2,
+          "Estimated input tokens (~8236 tokens, 24709 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-17/nb_4156.py",
+          0,
+          "Estimated input tokens (~8786 tokens, 26360 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-17/nb_4156.py",
+          1,
+          "Estimated input tokens (~8786 tokens, 26360 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-17/nb_4156.py",
+          2,
+          "Estimated input tokens (~8786 tokens, 26360 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-10/nb_1411.py",
+          0,
+          "Estimated input tokens (~9246 tokens, 27740 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-10/nb_1411.py",
+          1,
+          "Estimated input tokens (~9246 tokens, 27740 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-10/nb_1411.py",
+          2,
+          "Estimated input tokens (~9246 tokens, 27740 chars) exceeds Groq on-demand per-request ITPM limit (7000 tokens). Deferred per Phase 10 policy."
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-17/nb_669.py",
+          1,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1399. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-17/nb_669.py",
+          2,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1399. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-24/nb_934.py",
+          1,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1399. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-24/nb_934.py",
+          2,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1399. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-09/nb_1070.py",
+          1,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1399. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-05/nb_2770.py",
+          2,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1086. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-30/nb_89.py",
+          0,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1086. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-30/nb_89.py",
+          1,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1086. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ],
+        [
+          "GitHub-data/notebooks/2021-09-30/nb_89.py",
+          2,
+          "RateLimitError: Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01kxc01r04e509fc3cmhxtr5v7` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1086. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+        ]
+      ],
+      "metrics": {
+        "n_scored": 46,
+        "per_category": {
+          "pre": {
+            "precision": 0.3871,
+            "recall": 1.0,
+            "f1": 0.5581,
+            "tp": 12,
+            "fp": 19,
+            "fn": 0,
+            "tn": 15
+          },
+          "overlap": {
+            "precision": 0.1111,
+            "recall": 0.25,
+            "f1": 0.1538,
+            "tp": 1,
+            "fp": 8,
+            "fn": 3,
+            "tn": 34
+          },
+          "multi": {
+            "precision": 0.5217,
+            "recall": 0.9231,
+            "f1": 0.6667,
+            "tp": 12,
+            "fp": 11,
+            "fn": 1,
+            "tn": 22
+          }
+        },
+        "macro_f1": 0.4595
+      },
+      "per_run_variance": {
+        "run_macro_f1s": [
+          0.4595,
+          0.4702,
+          0.4595
+        ],
+        "mean_macro_f1": 0.4631,
+        "std_macro_f1": 0.005,
+        "per_run_details": [
+          {
+            "n_scored": 46,
+            "per_category": {
+              "pre": {
+                "precision": 0.3871,
+                "recall": 1.0,
+                "f1": 0.5581,
+                "tp": 12,
+                "fp": 19,
+                "fn": 0,
+                "tn": 15
+              },
+              "overlap": {
+                "precision": 0.1111,
+                "recall": 0.25,
+                "f1": 0.1538,
+                "tp": 1,
+                "fp": 8,
+                "fn": 3,
+                "tn": 34
+              },
+              "multi": {
+                "precision": 0.5217,
+                "recall": 0.9231,
+                "f1": 0.6667,
+                "tp": 12,
+                "fp": 11,
+                "fn": 1,
+                "tn": 22
+              }
+            },
+            "macro_f1": 0.4595
+          },
+          {
+            "n_scored": 46,
+            "per_category": {
+              "pre": {
+                "precision": 0.3871,
+                "recall": 1.0,
+                "f1": 0.5581,
+                "tp": 12,
+                "fp": 19,
+                "fn": 0,
+                "tn": 15
+              },
+              "overlap": {
+                "precision": 0.125,
+                "recall": 0.25,
+                "f1": 0.1667,
+                "tp": 1,
+                "fp": 7,
+                "fn": 3,
+                "tn": 35
+              },
+              "multi": {
+                "precision": 0.5455,
+                "recall": 0.9231,
+                "f1": 0.6857,
+                "tp": 12,
+                "fp": 10,
+                "fn": 1,
+                "tn": 23
+              }
+            },
+            "macro_f1": 0.4702
+          },
+          {
+            "n_scored": 46,
+            "per_category": {
+              "pre": {
+                "precision": 0.3871,
+                "recall": 1.0,
+                "f1": 0.5581,
+                "tp": 12,
+                "fp": 19,
+                "fn": 0,
+                "tn": 15
+              },
+              "overlap": {
+                "precision": 0.1111,
+                "recall": 0.25,
+                "f1": 0.1538,
+                "tp": 1,
+                "fp": 8,
+                "fn": 3,
+                "tn": 34
+              },
+              "multi": {
+                "precision": 0.5217,
+                "recall": 0.9231,
+                "f1": 0.6667,
+                "tp": 12,
+                "fp": 11,
+                "fn": 1,
+                "tn": 22
+              }
+            },
+            "macro_f1": 0.4595
+          }
+        ]
+      },
+      "majority_vote_predictions": {
+        "GitHub-data/notebooks/2021-09-05/nb_1244.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-07/nb_949.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-09/nb_498.py": {
+          "pre": false,
+          "overlap": true,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-04/nb_1743.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-15/nb_3436.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-14/nb_100.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-23/nb_2646.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-07/nb_4061.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-26/nb_1094.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-17/nb_1782.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-02/nb_3065.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-30/nb_195.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-12/nb_1942.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-01/nb_604.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-25/nb_1162.py": {
+          "pre": true,
+          "overlap": true,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-09/nb_2544.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-10/nb_2760.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-17/nb_1585.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-24/nb_2945.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-24/nb_2053.py": {
+          "pre": true,
+          "overlap": true,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-10/nb_322.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-21/nb_2660.py": {
+          "pre": true,
+          "overlap": true,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-27/nb_1060.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-06/nb_1824.py": {
+          "pre": true,
+          "overlap": true,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-13/nb_959.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-21/nb_2685.py": {
+          "pre": false,
+          "overlap": true,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-23/nb_524.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-22/nb_463.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-01/nb_1334.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-08/nb_1761.py": {
+          "pre": false,
+          "overlap": true,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-16/nb_318.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-18/nb_1959.py": {
+          "pre": true,
+          "overlap": true,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-24/nb_2439.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-05/nb_2816.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-08/nb_678.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-30/nb_3594.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-12/nb_125.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-11/nb_86.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-29/nb_1147.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-20/nb_1322.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-15/nb_281.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-29/nb_416.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-25/nb_2239.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-25/nb_2421.py": {
+          "pre": true,
+          "overlap": false,
+          "multi": false
+        },
+        "GitHub-data/notebooks/2021-09-09/nb_1731.py": {
+          "pre": false,
+          "overlap": true,
+          "multi": true
+        },
+        "GitHub-data/notebooks/2021-09-10/nb_1176.py": {
+          "pre": false,
+          "overlap": false,
+          "multi": false
+        }
+      }
+    }
+  }
+}

@@ -7,3 +7,5 @@ __pycache__/
 # Yang et al. evaluation corpus
 eval/yang_corpus/notebooks/
 .venv/
+*.backup
+*.bak

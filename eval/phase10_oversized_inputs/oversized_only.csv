@@ -1,0 +1,1 @@
+nb_id,nb_path,file_size_bytes,source_char_count,architecture,runs,prompt_char_count_estimated,estimated_input_tokens,estimator_method,groq_preflight_limit_tokens,status,deferral_reason,timestamp,provider_verified_tokens
